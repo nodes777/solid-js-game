@@ -1,0 +1,29 @@
+.grid {
+  /* width: 100vw;
+  height: 100vh; */
+  /* border: 1px solid #999; */
+  /* transform: rotate(45deg); */
+  transform: scaleY(0.5);
+}
+
+.row {
+  display: flex;
+}
+
+.tile {
+  position: absolute;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  transform: rotate(45deg);
+  width: 64px;
+  height: 64px;
+  /* transform-origin: center center; */
+  /* transform: skewY(-30deg); */
+  /* transform: scaleY(0.5);  */
+  /* transform: skewy(-45deg) rotate(45deg); */
+  /* transform: matrix(0.5, 0, 0, 0.5, 0, 0); */
+}
+
+.test {
+  color: red;
+}
