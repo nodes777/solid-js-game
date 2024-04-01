@@ -13,6 +13,11 @@ interface Tile {
 const gridSize = 10;
 const angleIncrement = 45;
 
+// Next Steps:
+// Break App up into components
+// Test images on tiles
+// Add interaction on hover
+
 const createTiles = (): Tile[] => {
   const tiles = [];
 
@@ -67,9 +72,9 @@ const Tile = (props: { tile: Tile; style: any }) => {
 
 function App() {
   return (
-    <>
+    <div class={styles.tileContainer}>
       <TileGrid tiles={createTiles()} />
-    </>
+    </div>
   );
 }
 
