@@ -1,0 +1,9 @@
+.seed {
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+}
