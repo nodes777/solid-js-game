@@ -1,13 +1,13 @@
 import { createSignal, Show } from "solid-js";
-import styles from "../styles.module.css";
-import { Tile } from "./Tile/Tile";
-import { TileI } from "../createTiles";
+import { Tile } from "../Tile/Tile";
+import { TileI } from "../../createTiles";
+import { Rain } from "../Rain/Rain";
 
 export const TileGrid = (props: { tiles: TileI[] }) => {
   // @todo - all divs rerender when a single tile is updated
   const [tiles, setTiles] = createSignal(props.tiles);
   return (
-    <div class={styles.grid}>
+    <div>
       <Show when={tiles().length > 0}>
         {tiles().map((tile) => (
           <Tile

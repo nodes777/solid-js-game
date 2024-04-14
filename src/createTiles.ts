@@ -16,10 +16,10 @@ const gridSize = 10;
 const angleIncrement = 45;
 
 // Next Steps:
-// Add interaction on hover
 // Add growth loop
 // Add Rain
 // Bug all tiles rerender when a single tile is updated
+// Add interaction on hover
 
 export const createTiles = (): TileI[] => {
   const tiles = [];
