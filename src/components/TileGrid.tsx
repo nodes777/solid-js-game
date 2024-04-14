@@ -4,6 +4,7 @@ import { Tile } from "./Tile/Tile";
 import { TileI } from "../createTiles";
 
 export const TileGrid = (props: { tiles: TileI[] }) => {
+  // @todo - all divs rerender when a single tile is updated
   const [tiles, setTiles] = createSignal(props.tiles);
   return (
     <div class={styles.grid}>

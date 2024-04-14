@@ -1,3 +1,5 @@
+import styles from "./styles.module.css";
+
 export const Flower = () => {
-  return <div>Flower</div>;
+  return <div class={styles.flower}>🌼</div>;
 };
