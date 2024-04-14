@@ -1,6 +1,6 @@
 import { createSignal, Show } from "solid-js";
 import styles from "../styles.module.css";
-import { Tile } from "./Tile";
+import { Tile } from "./Tile/Tile";
 import { TileI } from "../createTiles";
 
 export const TileGrid = (props: { tiles: TileI[] }) => {

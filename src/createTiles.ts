@@ -19,6 +19,7 @@ const angleIncrement = 45;
 // Test images on tiles
 // Add interaction on hover
 // Add growth loop
+// Add Rain
 
 export const createTiles = (): TileI[] => {
   const tiles = [];

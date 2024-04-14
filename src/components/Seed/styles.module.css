@@ -1,0 +1,16 @@
+.seed {
+  background-color: darkgreen;
+  border-radius: 50%;
+  display: flex;
+  justify-self: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+}
+
+.seedImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -12,12 +12,3 @@
 .row {
   display: flex;
 }
-
-.tile {
-  position: absolute;
-  border: 1px solid #999;
-  box-sizing: border-box;
-  transform: rotate(45deg);
-  width: 64px;
-  height: 64px;
-}

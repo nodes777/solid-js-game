@@ -1,9 +1,9 @@
 import { Setter } from "solid-js";
-import styles from "../styles.module.css";
-import { Stage, TileI } from "../createTiles";
-import { Seed } from "./Seed";
-import { Flower } from "./Flower";
-import { Sprout } from "./Sprout";
+import styles from "./styles.module.css";
+import { Stage, TileI } from "../../createTiles";
+import { Seed } from "../Seed/Seed";
+import { Flower } from "../Flower/Flower";
+import { Sprout } from "../Sprout/Sprout";
 
 export const Tile = (props: {
   tile: TileI;
@@ -20,7 +20,11 @@ export const Tile = (props: {
   };
 
   return (
-    <div class={styles.tile} style={props.style} onClick={handleClick}>
+    <div
+      class={props.tile.stage ? styles.centeredTile : styles.tile}
+      style={props.style}
+      onClick={handleClick}
+    >
       {(() => {
         switch (props.tile.stage) {
           case Stage.Seed:
