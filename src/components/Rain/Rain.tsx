@@ -6,13 +6,14 @@ export const Rain = () => {
   const generateRainDrops = () => {
     const rainDrops = [];
     for (let i = 0; i < 1000; i++) {
-      const left = Math.random() * window.innerWidth;
+      const left = Math.random() * 2 * window.innerWidth;
       const top = Math.random() * window.innerHeight;
       // give each raindrop its own signal
       const [drop, setDrop] = createSignal({
         top,
         left,
-        opacity: 1,
+        // random rate between 1 and 5
+        rate: Math.random() * 4 + 1,
       });
 
       rainDrops.push({ drop, setDrop });
@@ -27,18 +28,18 @@ export const Rain = () => {
   const rainDrops = generateRainDrops();
   const step = () => {
     rainDrops.forEach((rainDrop) => {
-      const { top, left, opacity } = rainDrop.drop();
+      const { top, left, rate } = rainDrop.drop();
       if (top > window.innerHeight || left < 0) {
         rainDrop.setDrop({
           top: 0,
           left: Math.random() * 2 * window.innerWidth,
-          opacity: 1,
+          rate,
         });
       } else {
         rainDrop.setDrop({
-          top: top + 2,
-          left: left - 2,
-          opacity,
+          top: top + rate,
+          left: left - rate,
+          rate,
         });
       }
     });
