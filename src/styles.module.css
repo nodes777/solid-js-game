@@ -7,4 +7,6 @@
   justify-content: center;
   box-sizing: border-box;
   transform: scaleY(0.5);
+
+  user-select: none;
 }

@@ -1,12 +1,12 @@
 import { Setter } from "solid-js";
 import styles from "./styles.module.css";
 import { Stage, TileI } from "../../createTiles";
-import { Seed } from "../Seed/Seed";
-import { Flower } from "../Flower/Flower";
-import { Sprout } from "../Sprout/Sprout";
+import { Seed } from "../Plants/Seed/Seed";
+import { Flower } from "../Plants/Flower/Flower";
+import { Sprout } from "../Plants/Sprout/Sprout";
 
-const determineNextGrowthStage = (tile: TileI): Stage | null => {
-  switch (tile.stage) {
+const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
+  switch (stage) {
     case null:
       return Stage.Seed;
     case Stage.Seed:
@@ -16,34 +16,27 @@ const determineNextGrowthStage = (tile: TileI): Stage | null => {
     case Stage.Flower:
       return Stage.Flower;
     default:
-      return tile.stage;
+      return stage;
   }
 };
 
-export const Tile = (props: {
-  tile: TileI;
-  style: any;
-  setTiles: Setter<TileI[]>;
-}) => {
+export const Tile = (props: { tile: TileI; style: any }) => {
   const handleClick = () => {
-    console.log(props.tile.id);
-    props.setTiles((allTiles) =>
-      allTiles.map((tile) =>
-        tile.id === props.tile.id
-          ? { ...tile, stage: determineNextGrowthStage(tile) }
-          : tile
-      )
-    );
+    console.log(props.tile.tile().id);
+    props.tile.setTile((tile) => ({
+      ...tile,
+      stage: determineNextGrowthStage(tile.stage),
+    }));
   };
 
   return (
     <div
-      class={props.tile.stage ? styles.centeredTile : styles.tile}
+      class={props.tile.tile().stage ? styles.centeredTile : styles.tile}
       style={props.style}
       onClick={handleClick}
     >
       {(() => {
-        switch (props.tile.stage) {
+        switch (props.tile.tile().stage) {
           case Stage.Seed:
             return <Seed />;
           case Stage.Sprout:
@@ -51,7 +44,7 @@ export const Tile = (props: {
           case Stage.Flower:
             return <Flower />;
           default:
-            return props.tile.title;
+            return props.tile.tile().title;
         }
       })()}
     </div>

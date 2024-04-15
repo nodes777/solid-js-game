@@ -6,11 +6,11 @@
   width: 64px;
   height: 64px;
   background-color: green;
+  cursor: default;
+  box-shadow: 16px 16px 8px rgba(0, 120, 0, 0.5);
 
   display: flex;
   justify-content: center;
-
-  box-shadow: 16px 16px 8px rgba(0, 120, 0, 0.5);
 }
 
 .centeredTile {
@@ -21,6 +21,8 @@
   width: 64px;
   height: 64px;
   background-color: green;
+  cursor: default;
+  box-shadow: 16px 16px 8px rgba(0, 120, 0, 0.5);
 
   display: flex;
   justify-content: center;

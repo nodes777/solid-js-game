@@ -1,9 +1,21 @@
+import { Accessor, Setter, createSignal } from "solid-js";
+
 export interface TileI {
-  id: number;
-  title: string;
-  left: string;
-  top: string;
-  stage: null | Stage;
+  // @todo: rename this to getTile
+  tile: Accessor<{
+    id: number;
+    title: string;
+    left: string;
+    top: string;
+    stage: null | Stage;
+  }>;
+  setTile: Setter<{
+    id: number;
+    title: string;
+    left: string;
+    top: string;
+    stage: null | Stage;
+  }>;
 }
 
 export enum Stage {
@@ -16,9 +28,8 @@ const gridSize = 10;
 const angleIncrement = 45;
 
 // Next Steps:
+// Consolidate CSS for plant stages
 // Add growth loop
-// Add Rain
-// Bug all tiles rerender when a single tile is updated
 // Add interaction on hover
 
 export const createTiles = (): TileI[] => {
@@ -35,14 +46,21 @@ export const createTiles = (): TileI[] => {
       const top = `${coordY}px`;
 
       const id = i * gridSize + j;
-
-      tiles.push({
+      const [tile, setTile] = createSignal<{
+        id: number;
+        title: string;
+        left: string;
+        top: string;
+        stage: null | Stage;
+      }>({
         id,
         title: `Tile ${i}, ${j} `,
         left,
         top,
         stage: null,
       });
+
+      tiles.push({ tile, setTile });
     }
   }
 

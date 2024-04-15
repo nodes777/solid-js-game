@@ -1,50 +1,60 @@
+import { onMount, createSignal } from "solid-js";
+
 import styles from "./styles.module.css";
-
-// const generateRaindrops = () => {
-//   const raindrops = [];
-//   for (let i = 0; i < 100; i++) {
-//     raindrops.push(
-//       <div
-//         class={styles.rainDrop}
-//         style={{
-//           top: `${Math.random() * 100}vh`,
-//           left: `${Math.random() * 100}vw`,
-//         }}
-//       ></div>
-//     );
-//   }
-//   return raindrops;
-// };
-// export const Rain = () => {
-//   return <div class={styles.rainContainer}>{generateRaindrops()}</div>;
-// };
-
-import { createEffect, onMount } from "solid-js";
 
 export const Rain = () => {
   const generateRainDrops = () => {
     const rainDrops = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const left = Math.random() * window.innerWidth;
       const top = Math.random() * window.innerHeight;
-      rainDrops.push({ left, top });
+      // give each raindrop its own signal
+      const [drop, setDrop] = createSignal({
+        top,
+        left,
+        opacity: 1,
+      });
+
+      rainDrops.push({ drop, setDrop });
     }
     return rainDrops;
   };
 
-  // onMount(() => {
-  //   document.body.style.overflow = "hidden"; // Hide scrollbar
-  // });
+  onMount(() => {
+    document.body.style.overflow = "hidden"; // Hide scrollbar hack
+  });
+
+  const rainDrops = generateRainDrops();
+  const step = () => {
+    rainDrops.forEach((rainDrop) => {
+      const { top, left, opacity } = rainDrop.drop();
+      if (top > window.innerHeight || left < 0) {
+        rainDrop.setDrop({
+          top: 0,
+          left: Math.random() * 2 * window.innerWidth,
+          opacity: 1,
+        });
+      } else {
+        rainDrop.setDrop({
+          top: top + 2,
+          left: left - 2,
+          opacity,
+        });
+      }
+    });
+    requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
 
   return (
     <div class={styles.rainContainer}>
-      {generateRainDrops().map((drop, i) => (
+      {rainDrops.map((rainDrop, i) => (
         <div
-          // key={`raindrop-${i}`}
           class={styles.rainDrop}
           style={{
-            left: `${drop.left}px`,
-            top: `${drop.top}px`,
+            left: `${rainDrop.drop().left}px`,
+            top: `${rainDrop.drop().top}px`,
           }}
         />
       ))}
