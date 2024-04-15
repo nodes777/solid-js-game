@@ -1,4 +1,3 @@
-import { Setter } from "solid-js";
 import styles from "./styles.module.css";
 import { Stage, TileI } from "../../createTiles";
 import { Seed } from "../Plants/Seed/Seed";
