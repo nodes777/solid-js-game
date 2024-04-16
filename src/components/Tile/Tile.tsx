@@ -31,9 +31,9 @@ export const Tile = (props: { tile: TileI; style: any }) => {
   };
 
   const rate = Math.floor(Math.random() * 2000) + 3000;
-  setInterval(() => {
-    handleGrowth();
-  }, rate);
+  // setInterval(() => {
+  //   handleGrowth();
+  // }, rate);
 
   const handleClick = (e: MouseEvent) => {
     //if left click
