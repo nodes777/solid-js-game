@@ -4,7 +4,6 @@ import { Seed } from "../Plants/Seed/Seed";
 import { Tree } from "../Plants/Tree/Tree";
 import { Sapling } from "../Plants/Sapling/Sapling";
 import { Lightning } from "../Lightning/Lightning";
-import { createEffect } from "solid-js";
 
 const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
   switch (stage) {
