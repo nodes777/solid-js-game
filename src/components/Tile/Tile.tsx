@@ -3,6 +3,7 @@ import { Stage, TileI } from "../../createTiles";
 import { Seed } from "../Plants/Seed/Seed";
 import { Tree } from "../Plants/Tree/Tree";
 import { Sprout } from "../Plants/Sapling/Sapling";
+import { Lightning } from "../Lightning/Lightning";
 
 const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
   switch (stage) {
@@ -20,12 +21,31 @@ const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
 };
 
 export const Tile = (props: { tile: TileI; style: any }) => {
-  const handleClick = () => {
-    console.log(props.tile.tile().id);
-    props.tile.setTile((tile) => ({
-      ...tile,
-      stage: determineNextGrowthStage(tile.stage),
-    }));
+  const handleClick = (e: MouseEvent) => {
+    console.log(e);
+    //if left click
+    if (e.type === "click") {
+      console.log(props.tile.tile().id);
+      props.tile.setTile((tile) => ({
+        ...tile,
+        stage: determineNextGrowthStage(tile.stage),
+      }));
+    }
+    // if right click
+    else if (e.type === "contextmenu") {
+      e.preventDefault();
+      props.tile.setTile((tile) => ({
+        ...tile,
+        stage: Stage.Lightning,
+      }));
+      // in .5 seconds set the stage to null
+      setTimeout(() => {
+        props.tile.setTile((tile) => ({
+          ...tile,
+          stage: null,
+        }));
+      }, 500);
+    }
   };
 
   return (
@@ -33,6 +53,7 @@ export const Tile = (props: { tile: TileI; style: any }) => {
       class={props.tile.tile().stage ? styles.centeredTile : styles.tile}
       style={props.style}
       onClick={handleClick}
+      onContextMenu={handleClick}
     >
       {(() => {
         switch (props.tile.tile().stage) {
@@ -42,6 +63,8 @@ export const Tile = (props: { tile: TileI; style: any }) => {
             return <Sprout />;
           case Stage.Tree:
             return <Tree />;
+          case Stage.Lightning:
+            return <Lightning />;
           default:
             return; //props.tile.tile().title;
         }

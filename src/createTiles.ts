@@ -22,13 +22,13 @@ export enum Stage {
   Seed = "Seed",
   Sprout = "Sprout",
   Tree = "Tree",
+  Lightning = "Lightning",
 }
 
 const gridSize = 10;
 const angleIncrement = 45;
 
 // Next Steps:
-// Consolidate CSS for plant stages
 // Add growth loop
 // Add interaction on hover
 
