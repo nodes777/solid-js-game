@@ -1,10 +1,11 @@
 import { createSignal } from "solid-js";
-import styles from "../styles.module.css";
+import styles from "./styles.module.css";
 
-export const Flower = () => {
+export const Sprout = () => {
   const [isAnimating, setIsAnimating] = createSignal(true);
   setTimeout(() => setIsAnimating(false), 1000);
+
   return (
-    <div class={isAnimating() ? styles.plantAnimate : styles.plant}>🌼</div>
+    <div class={isAnimating() ? styles.saplingAnimate : styles.sapling}>🌿</div>
   );
 };

@@ -21,7 +21,7 @@ export interface TileI {
 export enum Stage {
   Seed = "Seed",
   Sprout = "Sprout",
-  Flower = "Flower",
+  Tree = "Tree",
 }
 
 const gridSize = 10;

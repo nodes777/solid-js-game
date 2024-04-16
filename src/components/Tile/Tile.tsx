@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 import { Stage, TileI } from "../../createTiles";
 import { Seed } from "../Plants/Seed/Seed";
-import { Flower } from "../Plants/Flower/Flower";
-import { Sprout } from "../Plants/Sprout/Sprout";
+import { Tree } from "../Plants/Tree/Tree";
+import { Sprout } from "../Plants/Sapling/Sapling";
 
 const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
   switch (stage) {
@@ -11,9 +11,9 @@ const determineNextGrowthStage = (stage: Stage | null): Stage | null => {
     case Stage.Seed:
       return Stage.Sprout;
     case Stage.Sprout:
-      return Stage.Flower;
-    case Stage.Flower:
-      return Stage.Flower;
+      return Stage.Tree;
+    case Stage.Tree:
+      return Stage.Tree;
     default:
       return stage;
   }
@@ -40,10 +40,10 @@ export const Tile = (props: { tile: TileI; style: any }) => {
             return <Seed />;
           case Stage.Sprout:
             return <Sprout />;
-          case Stage.Flower:
-            return <Flower />;
+          case Stage.Tree:
+            return <Tree />;
           default:
-            return props.tile.tile().title;
+            return; //props.tile.tile().title;
         }
       })()}
     </div>
