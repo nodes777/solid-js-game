@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 import styles from "./styles.module.css";
 
-export const Sprout = () => {
+export const Sapling = () => {
   const [isAnimating, setIsAnimating] = createSignal(true);
   setTimeout(() => setIsAnimating(false), 1000);
 

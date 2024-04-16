@@ -20,7 +20,7 @@ export interface TileI {
 
 export enum Stage {
   Seed = "Seed",
-  Sprout = "Sprout",
+  Sapling = "Sapling",
   Tree = "Tree",
   Lightning = "Lightning",
 }
