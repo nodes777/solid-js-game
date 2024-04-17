@@ -25,7 +25,7 @@ export const Snow = () => {
     document.body.style.overflow = "hidden"; // Hide scrollbar hack
   });
 
-  const [snowFlakes, setsnowFlakes] = createSignal(generatesnowFlakes());
+  const [snowFlakes, setSnowFlakes] = createSignal(generatesnowFlakes());
 
   const step = () => {
     const newDrops = snowFlakes().map((snowFlake) => {
@@ -44,7 +44,7 @@ export const Snow = () => {
         };
       }
     });
-    setsnowFlakes(newDrops);
+    setSnowFlakes(newDrops);
     requestAnimationFrame(step);
   };
 
