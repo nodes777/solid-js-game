@@ -28,7 +28,7 @@ export const Snow = () => {
   const [snowFlakes, setSnowFlakes] = createSignal(generatesnowFlakes());
 
   const step = () => {
-    const newDrops = snowFlakes().map((snowFlake) => {
+    const newFlakes = snowFlakes().map((snowFlake) => {
       const { top, left, rate } = snowFlake;
       if (top > window.innerHeight || left < 0) {
         return {
@@ -44,7 +44,7 @@ export const Snow = () => {
         };
       }
     });
-    setSnowFlakes(newDrops);
+    setSnowFlakes(newFlakes);
     requestAnimationFrame(step);
   };
 
