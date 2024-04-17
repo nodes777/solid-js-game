@@ -2,12 +2,12 @@ import { onMount, createSignal } from "solid-js";
 
 import styles from "./styles.module.css";
 
-const generateRainDrops = () => {
-  const rainDrops = [];
+const generatesnowFlakes = () => {
+  const snowFlakes = [];
   for (let i = 0; i < 1000; i++) {
     const left = Math.random() * 2 * window.innerWidth;
     const top = Math.random() * window.innerHeight;
-    // give each raindrop its own signal
+    // give each snowFlake its own signal
     const drop = {
       top,
       left,
@@ -15,21 +15,21 @@ const generateRainDrops = () => {
       rate: Math.random() * 4 + 1,
     };
 
-    rainDrops.push(drop);
+    snowFlakes.push(drop);
   }
-  return rainDrops;
+  return snowFlakes;
 };
 
-export const Rain = () => {
+export const Snow = () => {
   onMount(() => {
     document.body.style.overflow = "hidden"; // Hide scrollbar hack
   });
 
-  const [rainDrops, setRainDrops] = createSignal(generateRainDrops());
+  const [snowFlakes, setsnowFlakes] = createSignal(generatesnowFlakes());
 
   const step = () => {
-    const newDrops = rainDrops().map((rainDrop) => {
-      const { top, left, rate } = rainDrop;
+    const newDrops = snowFlakes().map((snowFlake) => {
+      const { top, left, rate } = snowFlake;
       if (top > window.innerHeight || left < 0) {
         return {
           top: 0,
@@ -44,20 +44,20 @@ export const Rain = () => {
         };
       }
     });
-    setRainDrops(newDrops);
+    setsnowFlakes(newDrops);
     requestAnimationFrame(step);
   };
 
   step();
 
   return (
-    <div class={styles.rainContainer}>
-      {rainDrops().map((rainDrop, i) => (
+    <div class={styles.SnowContainer}>
+      {snowFlakes().map((snowFlake, i) => (
         <div
-          class={styles.rainDrop}
+          class={styles.snowFlake}
           style={{
-            left: `${rainDrop.left}px`,
-            top: `${rainDrop.top}px`,
+            left: `${snowFlake.left}px`,
+            top: `${snowFlake.top}px`,
           }}
         />
       ))}
