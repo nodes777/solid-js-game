@@ -1,10 +1,6 @@
-## Usage
+# React SydJS Christmas Tree Simulation
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+This demo is for [this SydJS presentation](https://docs.google.com/presentation/d/1P_WazMpSY2Q1A9IeVNdL2Aw8CUwN-1r7zW2DQRw5Z8E/edit#slide=id.g2cb1fd0f957_0_131). It's related to this [React repo](https://github.com/nodes777/react-sydjs-sim/)
 
 ## Available Scripts
 
@@ -15,14 +11,11 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-### `npm run build`
+## Branches
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+`feat/batched-updates`
+`feat/individual-updates`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-## Deployment
 
-Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
+
